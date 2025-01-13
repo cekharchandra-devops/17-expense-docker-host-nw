@@ -7,6 +7,8 @@ services:
   mysql:
     image: cekharch/mysql:v3
     container_name: mysql
+    ports:
+      - 3306:3306
     volumes:
       - mysql:/var/lib/mysql
   backend:
