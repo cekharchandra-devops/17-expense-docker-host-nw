@@ -7,19 +7,23 @@ services:
   mysql:
     image: cekharch/mysql:v3
     container_name: mysql
-    ports:
-      - 3306:3306
+    networks:
+      - host
     volumes:
       - mysql:/var/lib/mysql
   backend:
     image: cekharch/backend:v3
     container_name: backend
+    networks:
+      - host
     depends_on:
       - mysql
     command: sh -c "sleep 10 && node /opt/server/index.js"
   frontend:
     image: cekharch/frontend:v3
     container_name: frontend
+    networks:
+      - host
     ports:
       - 80:80
     depends_on:
