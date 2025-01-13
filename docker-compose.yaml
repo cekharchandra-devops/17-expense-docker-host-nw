@@ -1,0 +1,26 @@
+version: "3.7"
+networks:
+  host:
+volumes:
+  mysql:
+services:
+  mysql:
+    image: cekharch/mysql:v2
+    container_name: mysql
+    volumes:
+      - mysql:/var/lib/mysql
+  backend:
+    image: cekharch/backend:v2
+    container_name: backend
+    networks:
+      - expense
+    depends_on:
+      - mysql
+    command: ["sleep", "100"]  
+  frontend:
+    image: cekharch/frontend:v2
+    container_name: frontend
+    ports:
+      - 80:80
+    depends_on:
+      - backend

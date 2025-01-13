@@ -40,4 +40,4 @@ o/p:
     }
 
 ```
-No IP address is assigned for container. 
+No IP address is assigned for containers.
