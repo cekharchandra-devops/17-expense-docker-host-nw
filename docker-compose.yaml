@@ -7,8 +7,6 @@ services:
   mysql:
     image: cekharch/mysql:v3
     container_name: mysql
-    networks:
-      - host
     ports:
       - 3306:3306
     volumes:
